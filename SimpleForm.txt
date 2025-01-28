@@ -1,0 +1,67 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SimpleForm extends JFrame {
+    
+    public SimpleForm() {
+        
+        setTitle("User Registration Form");
+        setSize(350, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the frame
+        
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 2, 10, 10)); // 5 rows, 2 columns, 10px padding
+        
+    
+        panel.add(new JLabel("First Name:"));
+        JTextField firstNameField = new JTextField();
+        panel.add(firstNameField);
+        
+        panel.add(new JLabel("Last Name:"));
+        JTextField lastNameField = new JTextField();
+        panel.add(lastNameField);
+        
+        panel.add(new JLabel("Email:"));
+        JTextField emailField = new JTextField();
+        panel.add(emailField);
+        
+        panel.add(new JLabel("Password:"));
+        JPasswordField passwordField = new JPasswordField();
+        panel.add(passwordField);
+        
+        
+        JButton submitButton = new JButton("Submit");
+        panel.add(submitButton);
+        
+        
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                String email = emailField.getText();
+                String password = new String(passwordField.getPassword());
+
+                // Display the entered information
+                JOptionPane.showMessageDialog(null, 
+                        "First Name: " + firstName + "\n" +
+                        "Last Name: " + lastName + "\n" +
+                        "Email: " + email + "\n" +
+                        "Password: " + password);
+            }
+        });
+        
+        // Add the panel to the frame
+        add(panel);
+    }
+
+    public static void main(String[] args) {
+        // Create and display the form
+        SimpleForm form = new SimpleForm();
+        form.setVisible(true);
+    }
+}
